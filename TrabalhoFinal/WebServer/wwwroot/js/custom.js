@@ -9,11 +9,20 @@ function startWebSocket() {
   socket.addEventListener('message', ev => {
     const data = ev.data;
     // Se vier data-uri de imagem, atualiza o único <img>
-    if (typeof data === 'string' && data.startsWith('data:image/')) {
+    /*if (typeof data === 'string' && data.startsWith('data:image/')) {
       document.getElementById('streamImg').src = data;
     } else {
       console.log('Resposta servidor:', data);
+    }*/
+    //Original
+    if (typeof data === 'string' && data.startsWith('data:image/')) {
+      document.getElementById('streamImg').src = data;
+      console.log('Imagem recebida do servidor!');
+      alert('Imagem recebida do servidor!');
+    } else {
+      console.log('Resposta servidor:', data);
     }
+    //Adicionado
   });
 
   socket.addEventListener('close', () => console.log('WebSocket fechado'));
